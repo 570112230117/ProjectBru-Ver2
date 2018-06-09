@@ -3,6 +3,8 @@ package com.bru.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +47,19 @@ public class RepairController {
 	// repairmen
 	@RequestMapping(path = "/repairmen", method = RequestMethod.GET)
 	public String repairmen() {
+		return "repairmen";
+	}
+
+	// tabel to repairmen
+	@RequestMapping(value = "/gotorepairmen")
+	public String gotorepairmen(Model model, String repairId, HttpServletRequest request) {
+		try {
+			model.addAttribute("repairId", repairId);
+			request.getSession().setAttribute("repairId", repairId);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "repairmen";
 	}
 }

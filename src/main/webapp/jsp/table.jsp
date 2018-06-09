@@ -14,19 +14,21 @@
 		<div style="margin-top: 1cm; margin-left: 1cm; margin-right: 1cm; ">
 			<h3>รายการซ่อมเครื่องใช้ไฟฟ้า</h3>
 			<br>
-			<a href="/repairmen"><span class="btn btn-success">เพิ่มข้อมูล</span></a>
+			<a href="/repairmen">
+				<span class="btn btn-success">เพิ่มข้อมูล</span>
+			</a>
 			<br>
 			<br>
 			<div>
-				<a href="">แจ้งซ่อม</a>
+				<a href="#">แจ้งซ่อม</a>
 				<span class="badge">21</span>
-				<a href="">รอตรวจสอบ</a>
+				<a href="#">รอตรวจสอบ</a>
 				<span class="badge">0</span>
-				<a href="">ส่งซ่อม</a>
+				<a href="#">ส่งซ่อม</a>
 				<span class="badge">0</span>
-				<a href="">ดำเนินการ</a>
+				<a href="#">ดำเนินการ</a>
 				<span class="badge">0</span>
-				<a href="">นำกลับมาซ่อม</a>
+				<a href="#">นำกลับมาซ่อม</a>
 				<span class="badge">0</span>
 			</div>
 			<br>
@@ -42,8 +44,6 @@
 							<th>หมวดสินค้า</th>
 							<th>อาการเสีย</th>
 							<th>นัดวันซ่อม</th>
-
-
 							<th>สาเหตุ / วิธีแก้ไข</th>
 							<th>ผู้รับแจ้ง</th>
 							<th>ช่างผู้รับผิดชอบ</th>

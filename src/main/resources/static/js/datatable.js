@@ -36,9 +36,13 @@ $(document).ready(function () {
 			{
 				"mData": "",
 				"mRender": function (data, type, full) {//full คือ  ข้อมูลของ ตาราง
-					return '<a href=#>' + '<span class="glyphicon glyphicon-edit"></span>' + '</a>';
+//					return '<a onclick="gotorepairmen(repairId)">' + '<span class="glyphicon glyphicon-edit">Edit</span>' + '</a>';
+					return '<a href="/repairmen">' + '<span class="glyphicon glyphicon-edit">เพิ่มเติม</span>' + '</a>';
+					// return  '<a href="'+url+'">' + url + '</a>';
+					//<td><a onclick="gotoRepair(<%=list.get(i).getRepairId()%>)"><span class="glyphicon glyphicon-file">รายละเอียด</span></a></td>
 				}
 			},
+			
 		]
 	})
 });

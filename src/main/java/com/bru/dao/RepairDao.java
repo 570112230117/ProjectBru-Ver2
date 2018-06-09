@@ -15,7 +15,7 @@ import com.bru.util.ConnectDB;
 @Repository
 public class RepairDao {
 
-	// table
+	// list table
 	public List<RepairBean> findAll() {
 		List<RepairBean> list = new ArrayList<>();
 		ConnectDB con = new ConnectDB();
@@ -49,6 +49,22 @@ public class RepairDao {
 			e.printStackTrace();
 		}
 		return list;
+	}// end method list
+
+	// แปลงวันที่เวลา
+	Locale localeTH = new Locale("th", "TH");
+	Locale localeEN = new Locale("en", "EN");
+	SimpleDateFormat formate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", localeTH);
+
+	public static java.util.Date DateTHToEN(String date) throws ParseException {
+		Locale localeTH = new Locale("th", "TH");
+		Locale localeEN = new Locale("en", "EN");
+		SimpleDateFormat formate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", localeTH);
+		java.util.Date a = formate.parse(date);
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", localeEN);
+		java.util.Date b = dateformat.parse(dateformat.format(a));
+
+		return b;
 	}
 
 	// insert
@@ -78,23 +94,28 @@ public class RepairDao {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-	}
+	}// end method insert
+	
+	// update
+		public void update(RepairBean bean) {
+			ConnectDB con = new ConnectDB();
+			PreparedStatement prepared = null;
+			StringBuilder sql = new StringBuilder();
+			try {
+				sql.append(" UPDATE repair SET  repair_name = ? , repair_address = ?, repair_phone = ?, repair_email = ? WHERE repair_id = ? ");
+				prepared = con.openConnect().prepareStatement(sql.toString());
+				prepared.setString(1, bean.getRepairname());
+				prepared.setString(2, bean.getRepairAddress());
+				prepared.setString(3, bean.getRepairPhone());
+				prepared.setString(4, bean.getRepairEmail());
+				prepared.setInt(5, bean.getRepairId());
 
-	// วันที่เวลา
-	Locale localeTH = new Locale("th", "TH");
-	Locale localeEN = new Locale("en", "EN");
-	SimpleDateFormat formate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", localeTH);
+				prepared.executeUpdate();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 
-	public static java.util.Date DateTHToEN(String date) throws ParseException {
-		Locale localeTH = new Locale("th", "TH");
-		Locale localeEN = new Locale("en", "EN");
-		SimpleDateFormat formate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", localeTH);
-		java.util.Date a = formate.parse(date);
-		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", localeEN);
-		java.util.Date b = dateformat.parse(dateformat.format(a));
-
-		return b;
-	}
+		}// end method update
 
 	// endclass
 }
